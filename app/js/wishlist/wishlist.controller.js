@@ -7,6 +7,14 @@
     wishListFactory.getWishList(function(data){
       vm.wishlist = data;
     })
+
+    vm.addItemDetails = function(){
+        wishListFactory.addNewItem(vm.newItem, function(data){
+          vm.wishlist = vm.wishlist || {};
+          vm.wishlist[data.name] = vm.newItem;
+          vm.newItem = {};
+        })
+    }
   })
   .controller('ShowItemController',function(){
   })
@@ -14,4 +22,3 @@
   .controller('EditController',function(){
   })
 })();
-
