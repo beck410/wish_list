@@ -3,6 +3,25 @@
   angular.module('wish_list')
     .config(function($routeProvider){
       $routeProvider
+      .when('/wishlist',{
+        templateUrl:'views/wishlist.html',
+        controller:'WishListController',
+        controllerAs:'wishlist'
+      })
+      .when('/wishlist/new',{
+        templateUrl:'views/itemform.html',
+        controller:'WishListController',
+        controllerAs:'wishlist'
+      })
+      .when('/wishlist/:id',{
+        templateUrl:'views/showitem.html',
+        controller:'ShowItemController',
+        controllerAs:'show'
+      })
+      .when('/wishlist/:id/edit',{
+        templateUrl:'views/itemform.html',
+        controller:'editController',
+        controllerAs:'edit'
+      })
     })
 })();
-
