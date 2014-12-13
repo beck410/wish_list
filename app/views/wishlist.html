@@ -10,13 +10,13 @@
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+  <tr ng-repeat="(itemID, item) in wishlist.wishlist">
+    <td>{{item.category}}</td>
+    <td><img ng-src="{{item.image}}"></td>
+    <td>{{item.name}}</td>
+    <td>{{item.price}}</td>
+    <td><a href="{{item.amazon}}">Amazon Link</a></td>
+    <td>{{item.priority}}</td>
     <td>
       <a class="btn btn-primary" href="/#/wishlist/{{item}}">More Details</a>
       <a class="btn btn-primary" href="/#/wishlist/{{item}}/edit">Edit Item</a>
