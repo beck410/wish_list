@@ -12,7 +12,7 @@
   <tbody>
   <tr ng-repeat="(itemID, item) in wishlist.wishlist">
     <td>{{item.category}}</td>
-    <td><img ng-src="{{item.image}}"></td>
+    <td><img class="item-img" ng-src="{{item.image}}"></td>
     <td>{{item.name}}</td>
     <td>{{item.price}}</td>
     <td><a href="{{item.amazon}}">Amazon Link</a></td>
