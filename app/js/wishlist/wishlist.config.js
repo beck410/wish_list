@@ -20,7 +20,7 @@
       })
       .when('/wishlist/:id/edit',{
         templateUrl:'views/itemform.html',
-        controller:'editController',
+        controller:'EditController',
         controllerAs:'edit'
       })
     })
