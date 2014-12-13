@@ -57,17 +57,17 @@
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
-        files: ['app/*.html','app/views/*.html','app/sass/*.scss', 'app/styles/*.css','app/js/*.js']
+        files: ['app/*.html','app/views/**.html','app/sass/**.scss', 'app/styles/*.css','app/js/**/*.js']
       },
       sass: {
         files: ['app/sass','app/sass/*.scss', 'app/dist/styles/*.css'],
         tasks: ['sass', 'cssmin','uncss']
       },
 
-      js: {
-      	files: ['app/js', 'app/js/*.js', 'app/dist/js/*.js'],
-      	tasks: ['concat', 'uglify']
-      }
+      // js: {
+      // 	files: ['app/js', 'app/js/*.js', 'app/dist/js/*.js'],
+      // 	tasks: ['concat', 'uglify']
+      // }
     },
 
     uncss: {
@@ -132,7 +132,6 @@
           'js/angular/angular.js': 'angular/angular.js',
           'js/angular-route/angular-route.min.js': 'angular-route/angular-route.min.js',
           'js/angular-route/angular-route.min.js.map': 'angular-route/angular-route.min.js.map',
-          'styles/normalize.css' : 'normalize.css/normalize.css',
           'js/bootstrap.js' : 'bootstrap/dist/js/bootstrap.js',
           'styles/bootstrap.css' : 'bootstrap/dist/css/bootstrap.css',
           'styles/bootstrap.css.map' : 'bootstrap/dist/css/bootstrap.css.map'
@@ -151,5 +150,5 @@
   grunt.registerTask('css', ['sass','cssmin','uncss']);
   grunt.registerTask('js', ['concat','uglify']);
   grunt.registerTask('production', ['sass,cssmin,uncss','uglify','imagemin']);
-  
+
 };
