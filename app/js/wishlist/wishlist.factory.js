@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('wish_list')
-  .factory('wishListFactory', function($http, FIREBASE_URL){
+  .factory('wishListFactory', function($http, FIREBASE_URL, $location){
     return {
       getWishList : _getWishList,
       addNewItem : _addNewItem
