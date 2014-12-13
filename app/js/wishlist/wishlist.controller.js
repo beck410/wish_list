@@ -1,5 +1,5 @@
 ;(function(){
   'use strict';
-  angular.module('wish_list',[])
+  angular.module('wish_list')
 })();
 
