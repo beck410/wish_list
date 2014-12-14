@@ -12,7 +12,7 @@
   <tbody>
   <tr ng-repeat="(key, item) in wishlist.wishlist">
     <td><img class="wishlist-img" ng-src="{{item.image}}"></td>
-    <td>{{item.itemName}}</td>
+    <td><a href="{{item.amazon}}">{{item.itemName}}</a></td>
     <td>
       <a class="btn btn-primary" href="/#/wishlist/{{key}}">More Details</a>
       <a class="btn btn-primary" href="/#/wishlist/{{key}}/edit">Edit Item</a>
