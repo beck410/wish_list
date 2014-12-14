@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="(itemID, item) in wishlist.wishlist">
+  <tr ng-repeat="(key, item) in wishlist.wishlist">
     <td>{{item.category}}</td>
     <td><img class="item-img" ng-src="{{item.image}}"></td>
     <td>{{item.itemName}}</td>
@@ -18,9 +18,9 @@
     <td><a href="{{item.amazon}}">Amazon Link</a></td>
     <td>{{item.priority}}</td>
     <td>
-      <a class="btn btn-primary" href="/#/wishlist/{{item}}">More Details</a>
-      <a class="btn btn-primary" href="/#/wishlist/{{item}}/edit">Edit Item</a>
-      <button class="btn btn-warning">Delete</button>
+      <a class="btn btn-primary" href="/#/wishlist/{{key}}">More Details</a>
+      <a class="btn btn-primary" href="/#/wishlist/{{key}}/edit">Edit Item</a>
+      <button class="btn btn-warning" ng-click="wishlist.removeItem(key)">Delete</button>
     </td>
   </tr>
   </tbody>

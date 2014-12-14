@@ -6,7 +6,13 @@
 
     wishListFactory.getWishList(function(data){
       vm.wishlist = data;
-    })
+    });
+
+    vm.removeItem = function(item){
+      wishListFactory.removeItem(item,function(){
+        delete vm.wishlist[item];
+      });
+    }
 
     vm.addItemDetails = function(){
         wishListFactory.addNewItem(vm.newItem, function(data){
@@ -16,6 +22,7 @@
           $location.path('/wishlist');
         })
     }
+
   })
   .controller('ShowItemController',function(){
   })
