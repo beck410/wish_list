@@ -2,6 +2,15 @@
   'use strict';
   angular.module('wish_list')
   .factory('wishListFactory', function($http, FIREBASE_URL, $location){
+
+    function _url(id){
+      if(id){
+        return FIREBASE_URL + 'wishlist/' + id + '.json';
+      } else {
+        return FIREBASE_URL + 'wishlist.json';
+      }
+    }
+
     return {
       getWishList : _getWishList,
       addNewItem : _addNewItem,
@@ -11,7 +20,7 @@
     };
 
     function _getWishList(cb){
-      $http.get(FIREBASE_URL + 'wishlist.json')
+      $http.get(_url())
         .success(function(data){
           cb(data);
         })
@@ -21,7 +30,7 @@
     }
 
     function _addNewItem(item, cb){
-      $http.post(FIREBASE_URL + 'wishlist.json', item)
+      $http.post(_url(), item)
         .success(function(data){
           cb(data)
         })
@@ -30,8 +39,8 @@
         })
     }
 
-    function _removeItem(item,cb){
-      $http.delete(FIREBASE_URL + 'wishlist/' + item + '.json')
+    function _removeItem(id,cb){
+      $http.delete(_url(id))
         .success(function(){
           cb();
         })
@@ -40,8 +49,8 @@
         })
     }
 
-    function _getItemDetails(item, cb){
-      $http.get(FIREBASE_URL + 'wishlist/' + item + '.json')
+    function _getItemDetails(id, cb){
+      $http.get(_url(id))
         .success(function(data){
           cb(data);
         })
@@ -51,7 +60,7 @@
     }
 
     function _editItemDetails(id, item){
-      $http.put(FIREBASE_URL + 'wishlist/' + id + '.json', item)
+      $http.put(_url(id))
         .success(function(data){
           $location.path('/wishlist')
         })
