@@ -6,7 +6,8 @@
       getWishList : _getWishList,
       addNewItem : _addNewItem,
       removeItem: _removeItem,
-      getItemDetails: _getItemDetails
+      getItemDetails: _getItemDetails,
+      editItemDetails: _editItemDetails
     };
 
     function _getWishList(cb){
@@ -46,6 +47,16 @@
         })
         .error(function(err){
           console.log('get item details error: ' + err)
+        })
+    }
+
+    function _editItemDetails(id, item){
+      $http.put(FIREBASE_URL + 'wishlist/' + id + '.json', item)
+        .success(function(data){
+          $location.path('/wishlist')
+        })
+        .error(function(err){
+          console.log('edit item error: ' + err)
         })
     }
   });

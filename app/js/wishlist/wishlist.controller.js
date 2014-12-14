@@ -32,6 +32,17 @@
     })
   })
 
-  .controller('EditController',function(){
+  .controller('EditController',function($routeParams, wishListFactory){
+    var vm = this;
+    var id = $routeParams.id;
+
+    wishListFactory.getItemDetails(id, function(data){
+      vm.newItem = data;
+    })
+
+    vm.addItemDetails = function(){
+      wishListFactory.editItemDetails(id,vm.newItem);
+    }
+
   })
 })();
