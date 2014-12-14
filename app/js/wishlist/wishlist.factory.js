@@ -5,7 +5,8 @@
     return {
       getWishList : _getWishList,
       addNewItem : _addNewItem,
-      removeItem: _removeItem
+      removeItem: _removeItem,
+      getItemDetails: _getItemDetails
     };
 
     function _getWishList(cb){
@@ -29,13 +30,22 @@
     }
 
     function _removeItem(item,cb){
-      console.log(FIREBASE_URL + 'wishlist/' + item + '.json')
       $http.delete(FIREBASE_URL + 'wishlist/' + item + '.json')
         .success(function(){
           cb();
         })
         .error(function(err){
           console.log('delete item error:' + err)
+        })
+    }
+
+    function _getItemDetails(item, cb){
+      $http.get(FIREBASE_URL + 'wishlist/' + item + '.json')
+        .success(function(data){
+          cb(data);
+        })
+        .error(function(err){
+          console.log('get item details error: ' + err)
         })
     }
   });

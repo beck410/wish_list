@@ -1,5 +1,9 @@
 /* Global Variables */
 /* Imports */
 .item-img {
-  max-height: 100px;
-  max-width: 100px; }
+  height: 300px;
+  width: 300px; }
+
+.wishlist-img {
+  height: 100px;
+  width: 100px; }

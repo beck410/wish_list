@@ -24,7 +24,12 @@
     }
 
   })
-  .controller('ShowItemController',function(){
+  .controller('ShowItemController',function($routeParams, wishListFactory){
+    var vm = this;
+    var id = $routeParams.id;
+    wishListFactory.getItemDetails(id,function(data){
+      vm.item = data;
+    })
   })
 
   .controller('EditController',function(){
