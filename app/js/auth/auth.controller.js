@@ -10,9 +10,12 @@
         $scope.$apply();
       })
     }
-
   })
- .controller('LogoutController',function(){
+  .controller('LogoutController',function($scope, $location, authFactory){
+    authFactory.logout(function(){
+      $location.path('/login');
+      $scope.$apply();
+    })
   })
  .controller('ChangePasswordController',function(){
   })
