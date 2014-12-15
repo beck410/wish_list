@@ -1,15 +1,16 @@
 ;(function(){
   'use strict';
   angular.module('wish_list')
-  .factory('wishListFactory', function($http, FIREBASE_URL, $location){
+  .factory('wishListFactory', function($rootScope, $http, FIREBASE_URL, $location){
 
     function _url(id){
       if(id){
-        return FIREBASE_URL + 'wishlist/' + id + '.json';
+        return FIREBASE_URL + 'users/' + $rootScope.user.uid + '/wishlist/' + id + '.json';
       } else {
-        return FIREBASE_URL + 'wishlist.json';
+        return FIREBASE_URL + 'users/' + $rootScope.user.uid + '/wishlist.json';
       }
     }
+
 
     return {
       getWishList : _getWishList,
@@ -23,6 +24,7 @@
       $http.get(_url())
         .success(function(data){
           cb(data);
+          console.log('url: ' + _url())
         })
         .error(function(err){
           console.log('get wishlist error:' + err);

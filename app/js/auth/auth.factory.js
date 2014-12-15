@@ -25,6 +25,7 @@
         if (error === null) {
           $rootScope.user = authData;
           console.log("User logged in successfully", authData);
+          ref.child('users').child(authData.uid).child('authData').set(authData)
           cb();
         } else {
           console.log("Error creating user:", error);

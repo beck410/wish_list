@@ -30,6 +30,7 @@
     var id = $routeParams.id;
     wishListFactory.getItemDetails(id,function(data){
       vm.item = data;
+      console.log(vm.item)
     })
   })
 
