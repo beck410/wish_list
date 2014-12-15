@@ -15,8 +15,7 @@
         .when('/logout',{
           template: '',
           controller: 'LogoutController',
-          controllerAs: 'logout',
-          private: true
+          controllerAs: 'logout'
         })
         .when('/changepassword',{
           templateUrl: 'views/changepassword.html',

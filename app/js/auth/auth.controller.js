@@ -36,6 +36,7 @@
 
     vm.changePassword = function(){
       authFactory.changePassword(vm.oldPassword, vm.newPassword, function(){
+        console.log('called')
         $location.path('/logout');
         $scope.$apply();
       });
