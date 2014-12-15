@@ -5,7 +5,8 @@
     return {
       login: _login,
       logout: _logout,
-      register: _register
+      register: _register,
+      changePassword: _changePassword
     }
 
     var ref = new Firebase(FIREBASE_URL);
@@ -47,6 +48,22 @@
         $rootScope.user = null;
         console.log('user logged out')
         cb();
+      })
+    }
+
+    function _changePassword(oldPass, newPass, cb){
+      var ref = new Firebase(FIREBASE_URL);
+      ref.changePassword({
+        email: ref.getAuth().password.email,
+        oldPassword: oldPass,
+        newPassword: newPass
+      }, function(error){
+        if (error === null) {
+          console.log('Password changed successfully');
+          cb();
+        } else {
+          console.log('Error changing password:', error);
+        }
       })
     }
   })
