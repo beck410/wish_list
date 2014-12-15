@@ -23,6 +23,8 @@
         })
     }
 
+    vm.priorityOptions = wishListFactory.priorityOptions;
+
   })
   .controller('ShowItemController',function($routeParams, wishListFactory){
 
@@ -38,6 +40,7 @@
 
     var vm = this;
     var id = $routeParams.id;
+    vm.priorityOptions = wishListFactory.priorityOptions;
 
     wishListFactory.getItemDetails(id, function(data){
       vm.newItem = data;

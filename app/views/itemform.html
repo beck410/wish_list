@@ -1,4 +1,4 @@
-<h1>Add a New Item</h1>
+<h1>Add Item Details</h1>
 <form name="itemForm" ng-submit = "itemForm.$valid && wishlist.addItemDetails()" novalidate>
   <div class="form-group" ng-class="{'has-error': !wishlist.newItem.category}">
     <label class="control-label">Category</label>
@@ -22,7 +22,11 @@
   </div>
   <div class="form-group">
     <label class="control-label">Priority</label>
-    <input class="form-control" type="text" ng-model="wishlist.newItem.priority">
+    <select ng-model="wishlist.newItem.priority">
+      <option value="{{key}}" ng-repeat="(value,key) in wishlist.priorityOptions">
+        {{value}}
+      </option>
+    </select>
   </div>
   <input class="btn btn-primary" type="submit" value="Add Item">
 </form>

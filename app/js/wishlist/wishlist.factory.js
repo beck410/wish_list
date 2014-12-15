@@ -11,20 +11,16 @@
       }
     }
 
-
-    return {
-      getWishList : _getWishList,
-      addNewItem : _addNewItem,
-      removeItem: _removeItem,
-      getItemDetails: _getItemDetails,
-      editItemDetails: _editItemDetails
+    var priorityOptions = {
+      high: 'i need this!',
+      medium: 'Please get me this',
+      low: 'i\'d like this'
     };
 
     function _getWishList(cb){
       $http.get(_url())
         .success(function(data){
           cb(data);
-          console.log('url: ' + _url())
         })
         .error(function(err){
           console.log('get wishlist error:' + err);
@@ -70,5 +66,15 @@
           console.log('edit item error: ' + err)
         })
     }
+
+    return {
+      getWishList : _getWishList,
+      addNewItem : _addNewItem,
+      removeItem: _removeItem,
+      getItemDetails: _getItemDetails,
+      editItemDetails: _editItemDetails,
+      priorityOptions: priorityOptions
+    };
+
   });
 })();
