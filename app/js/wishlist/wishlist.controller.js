@@ -1,8 +1,10 @@
 ;(function(){
   'use strict';
   angular.module('wish_list')
-  .controller('WishListController',function(wishListFactory, $location){
+  .controller('WishListController',function(wishListFactory, $location, authFactory){
     var vm = this;
+
+    authFactory.requireLogin();
 
     wishListFactory.getWishList(function(data){
       vm.wishlist = data;
@@ -24,7 +26,10 @@
     }
 
   })
-  .controller('ShowItemController',function($routeParams, wishListFactory){
+  .controller('ShowItemController',function($routeParams, wishListFactory, authFactory){
+
+    authFactory.requireLogin();
+
     var vm = this;
     var id = $routeParams.id;
     wishListFactory.getItemDetails(id,function(data){
@@ -32,7 +37,10 @@
     })
   })
 
-  .controller('EditController',function($routeParams, wishListFactory){
+  .controller('EditController',function($routeParams, wishListFactory, authFactory){
+
+    authFactory.requireLogin();
+
     var vm = this;
     var id = $routeParams.id;
 

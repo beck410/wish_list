@@ -7,7 +7,8 @@
       logout: _logout,
       register: _register,
       changePassword: _changePassword,
-      forgotPassword: _forgotPassword
+      forgotPassword: _forgotPassword,
+      requireLogin: _requireLogin
     }
 
     var ref = new Firebase(FIREBASE_URL);
@@ -80,6 +81,24 @@
           console.log('Error sending password reset email:', error);
         }
       });
+    }
+
+    function _requireLogin(){
+      if(!_isLoggedIn()){
+        $location.path('/login');
+      } else if(_hasTemporaryPassword()){
+        $location.path('/changepassword');
+      }
+    }
+
+    function _isLoggedIn(){
+      var ref = new Firebase(FIREBASE_URL);
+      return Boolean(ref.getAuth());
+    }
+
+    function _hasTemporaryPassword(){
+      var ref = new Firebase(FIREBASE_URL);
+      return ref.getAuth().password.isTemporaryPassword;
     }
   })
 })();
