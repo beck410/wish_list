@@ -58,7 +58,7 @@
     }
 
     function _editItemDetails(id, item){
-      $http.put(_url(id))
+      $http.put(_url(id),item)
         .success(function(data){
           $location.path('/wishlist')
         })
