@@ -1,16 +1,6 @@
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Amazon Link</th>
-      <th>Priority</th>
-    </tr>
-  </thead>
+<table class="wishlist row">
   <tbody>
-  <tr ng-repeat="(key, item) in wishlist.wishlist">
+  <tr ng-repeat="(key, item) in wishlist.wishlist" class="col-md-4">
     <td><img class="wishlist-img" ng-src="{{item.image}}"></td>
     <td><a href="{{item.amazon}}">{{item.itemName}}</a></td>
     <td>

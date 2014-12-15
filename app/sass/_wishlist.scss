@@ -1,9 +1,29 @@
-.item-img {
-  height: 300px;
-  width: 300px
+.wishlist-img {
+  height: 150px;
+  width: 150px;
+  border: 3px solid #2980b9;
 }
 
-.wishlist-img {
-  height: 100px;
-  width: 100px;
+.wishlist {
+  margin: 20px 0;
+
+  td {
+    display: block;
+    padding: 10px 5px;
+  }
+
+  tr{
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .wishlist td {
+    display: inline-block;
+  }
+
+  tr{
+    margin-top: 20px;
+    text-align: left;
+  }
 }

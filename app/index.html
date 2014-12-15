@@ -8,13 +8,18 @@
     <link rel="stylesheet" href="styles/wish_list.css" />
   </head>
   <body>
-  <h1 ng-show="user">{{user.password.email}}'s Wish List</h1>
-  <h1 ng-hide="user">My Wish List</h1>
-  <div class="page-buttons">
-    <div ng-include="'views/buttons.html'">
+  <div id="container">
+    <div class="header row">
+      <img class="header-img  col-md-4" src="images/cart.png">
+      <h1 ng-show="user" class="col-md-8">{{user.password.email}}'s Wish List</h1>
+      <h1 ng-hide="user" class="col-md-8">My Wish List</h1>
     </div>
+    <div class="page-buttons">
+      <div ng-include="'views/buttons.html'">
+      </div>
+    </div>
+    <div ng-view></div>
   </div>
-  <div ng-view></div>
   <script src="dist/js/firebase/firebase.js" type="text/javascript"></script>
   <script src="dist/js/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="dist/js/angular/angular.js" type="text/javascript"></script>
