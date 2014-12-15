@@ -2,6 +2,9 @@
   'use strict';
   angular.module('wish_list')
   .factory('authFactory', function($rootScope, $http, FIREBASE_URL, $location){
+
+    var ref = new Firebase(FIREBASE_URL);
+    $rootScope.user = ref.getAuth();
     return {
       login: _login,
       logout: _logout,
@@ -12,8 +15,6 @@
       disallowLogin: _disallowLogin
     }
 
-    var ref = new Firebase(FIREBASE_URL);
-    $rootScope.user = ref.getAuth();
 
     function _login(email, password,cb){
       var ref = new Firebase(FIREBASE_URL);
@@ -22,6 +23,7 @@
         password: password
       }, function(error, authData) {
         if (error === null) {
+          $rootScope.user = authData;
           console.log("User logged in successfully", authData);
           cb();
         } else {
