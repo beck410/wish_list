@@ -17,6 +17,12 @@
         $scope.$apply();
       })
     }
+
+    vm.forgotPassword = function(){
+      authFactory.forgotPassword(vm.email, function(){
+        alert('email has been sent with new password');
+      });
+    }
   })
   .controller('LogoutController',function($scope, $location, authFactory){
     authFactory.logout(function(){
@@ -33,5 +39,6 @@
         $scope.$apply();
       });
     }
+
   })
 })();

@@ -6,7 +6,8 @@
       login: _login,
       logout: _logout,
       register: _register,
-      changePassword: _changePassword
+      changePassword: _changePassword,
+      forgotPassword: _forgotPassword
     }
 
     var ref = new Firebase(FIREBASE_URL);
@@ -65,6 +66,20 @@
           console.log('Error changing password:', error);
         }
       })
+    }
+
+    function _forgotPassword(email, cb){
+      var ref = new Firebase(FIREBASE_URL);
+      ref.resetPassword({
+        email : email
+      }, function(error) {
+        if (error === null) {
+          console.log('Password reset email sent successfully');
+          cb();
+        } else {
+          console.log('Error sending password reset email:', error);
+        }
+      });
     }
   })
 })();
