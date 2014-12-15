@@ -5,9 +5,9 @@
 
     function _url(id){
       if(id){
-        return FIREBASE_URL + 'users/' + $rootScope.user.uid + '/wishlist/' + id + '.json';
+        return FIREBASE_URL + 'users/' + $rootScope.user.uid + '/wishlist/' + id + '.json?auth=' + $rootScope.user.token;
       } else {
-        return FIREBASE_URL + 'users/' + $rootScope.user.uid + '/wishlist.json';
+        return FIREBASE_URL + 'users/' + $rootScope.user.uid + '/wishlist.json?auth=' + $rootScope.user.token;
       }
     }
 
