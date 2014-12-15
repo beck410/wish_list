@@ -8,7 +8,8 @@
       register: _register,
       changePassword: _changePassword,
       forgotPassword: _forgotPassword,
-      requireLogin: _requireLogin
+      requireLogin: _requireLogin,
+      disallowLogin: _disallowLogin
     }
 
     var ref = new Firebase(FIREBASE_URL);
@@ -99,6 +100,12 @@
     function _hasTemporaryPassword(){
       var ref = new Firebase(FIREBASE_URL);
       return ref.getAuth().password.isTemporaryPassword;
+    }
+
+    function _disallowLogin(){
+      if(_isLoggedIn()){
+        $location.path('/wishlist');
+      }
     }
   })
 })();
