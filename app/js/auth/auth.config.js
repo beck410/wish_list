@@ -10,13 +10,21 @@
         .when('/logout',{
           template: '',
           controller: 'LogoutController',
-          controllerAs: 'logout'
+          controllerAs: 'logout',
+          private: true
         })
         .when('/changepassword',{
           templateUrl: 'views/changepassword.html',
           controller: 'ChangePasswordController',
-          controllerAs: 'changepw'
+          controllerAs: 'changepw',
+          private: true
         });
-    });
+    })
+    .run(function($rootScope, authFactory){
+      $rootScope.$on('$routeChangeStart', function(event, nextRoute, priorRoute){
+        if(nextRoute.$$route.private){
+          authFactory.requireLogin();
+        }
+      })
+    })
 })();
-

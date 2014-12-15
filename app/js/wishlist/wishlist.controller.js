@@ -1,10 +1,8 @@
 ;(function(){
   'use strict';
   angular.module('wish_list')
-  .controller('WishListController',function(wishListFactory, $location, authFactory){
+  .controller('WishListController',function(wishListFactory, $location){
     var vm = this;
-
-    authFactory.requireLogin();
 
     wishListFactory.getWishList(function(data){
       vm.wishlist = data;
@@ -26,9 +24,7 @@
     }
 
   })
-  .controller('ShowItemController',function($routeParams, wishListFactory, authFactory){
-
-    authFactory.requireLogin();
+  .controller('ShowItemController',function($routeParams, wishListFactory){
 
     var vm = this;
     var id = $routeParams.id;
@@ -37,9 +33,7 @@
     })
   })
 
-  .controller('EditController',function($routeParams, wishListFactory, authFactory){
-
-    authFactory.requireLogin();
+  .controller('EditController',function($routeParams, wishListFactory){
 
     var vm = this;
     var id = $routeParams.id;
