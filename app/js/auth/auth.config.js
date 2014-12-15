@@ -22,7 +22,7 @@
     })
     .run(function($rootScope, authFactory){
       $rootScope.$on('$routeChangeStart', function(event, nextRoute, priorRoute){
-        if(nextRoute.$$route.private){
+        if(nextRoute.$$route && nextRoute.$$route.private){
           authFactory.requireLogin();
         }
       })
