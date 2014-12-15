@@ -15,6 +15,7 @@
       authFactory.register(vm.email,vm.password,function(){
         $location.path('/wishlist');
         $scope.$apply();
+        vm.login();
       })
     }
 
